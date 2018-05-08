@@ -1,0 +1,39 @@
+%% Warning
+w = warning('query','last')
+id = w.identifier;
+warning('off',id)
+
+%% Plot
+set(0,'defaultlinelinewidth',3)
+set(0,'defaultaxeslinewidth',1)
+set(0,'defaultaxesfontsize',20)
+set(0,'DefaultLegendFontSize',15);
+set(0,'DefaultAxesXGrid','on','DefaultAxesYGrid','on')
+
+text(x,y,text,'fontsize',20,'HorizontalAlignment','center','interpreter','latex');
+
+%% Save Figure
+set(1,'Position',[0 0 1920 1080]);
+set(gcf,'PaperUnits','inches','PaperPosition',[0 0 16 9]);
+print('prob2','-dpng','-r240')
+
+%% Label
+xlabel('$\tilde{k}$','fontsize',20,'interpreter','latex');
+ylabel('$Ra$','fontsize',20,'interpreter','latex');
+
+%% Legend
+legend1 = cell(1,length(Ti_vec));
+color = 'rgbmck';
+string = 'legend2 = legend(';
+for i = 1:length(Ti_vec);
+    plot(NaN,NaN,color(i));
+    legend1{1,i} = sprintf('$T_I = %g$',Ti_vec(i));
+    string = [string 'legend1{1,' num2str(i) '},'];
+end
+string(end) = []; eval([string ');']);
+set(legend2,'interpreter','latex'); set(legend2,'fontsize',15);
+
+
+options = odeset('RelTol',3e-14,'AbsTol',3e-15);
+
+print -depsc foo.eps
