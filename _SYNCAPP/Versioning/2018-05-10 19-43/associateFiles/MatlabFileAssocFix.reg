@@ -2,9 +2,265 @@ Windows Registry Editor Version 5.00
 
 ;FIXES MATLAB FILE ASSOCIATIONS
 
+;REMOVES FIG FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.fig]
+
+[-HKEY_CLASSES_ROOT\MATLAB.fig.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.fig.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.fig]
+
 ;REMOVES M FILE ASSOCIATIONS
 
+[-HKEY_CLASSES_ROOT\.m]
+
+[-HKEY_CLASSES_ROOT\MATLAB.m.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.m.9.0.0]
+
 [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.m]
+
+;REMOVES MAT FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mat]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mat.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mat.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mat]
+
+;REMOVES MDL FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mdl]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mdl.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mdl.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mdl]
+
+;REMOVES MDLP FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mdlp]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mdlp.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mdlp.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mdlp]
+
+;REMOVES MEXW32 FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mexw32]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mexw32.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mexw32.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mexw32]
+
+;REMOVES MEXW64 FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mexw64]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mexw64.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mexw64.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mexw64]
+
+;REMOVES MN FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mn]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mn.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mn.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mn]
+
+;REMOVES MU FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mu]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mu.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mu.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mu]
+
+;REMOVES MUPHLP FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.muphlp]
+
+[-HKEY_CLASSES_ROOT\MATLAB.muphlp.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.muphlp.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.muphlp]
+
+;REMOVES P FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.p]
+
+[-HKEY_CLASSES_ROOT\MATLAB.p.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.p.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.p]
+
+;REMOVES SLX FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.slx]
+
+[-HKEY_CLASSES_ROOT\MATLAB.slx.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.slx.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.slx]
+
+;REMOVES SSC FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.ssc]
+
+[-HKEY_CLASSES_ROOT\MATLAB.ssc.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.ssc.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ssc]
+
+;REMOVES XVC FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.xvc]
+
+[-HKEY_CLASSES_ROOT\MATLAB.xvc.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.xvc.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.xvc]
+
+;REMOVES XVZ FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.xvz]
+
+[-HKEY_CLASSES_ROOT\MATLAB.xvz.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.xvz.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.xvz]
+
+;REMOVES MLAPP FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mlapp]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlapp.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlapp.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mlapp]
+
+;REMOVES MLTBX FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mltbx]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mltbx.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mltbx.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mltbx]
+
+;REMOVES MLDATX FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mldatx]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mldatx.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mldatx.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mldatx]
+
+;REMOVES REQ FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.req]
+
+[-HKEY_CLASSES_ROOT\MATLAB.req.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.req.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.req]
+
+;REMOVES SLDD FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.sldd]
+
+[-HKEY_CLASSES_ROOT\MATLAB.sldd.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.sldd.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.sldd]
+
+;REMOVES SLDDC FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.slddc]
+
+[-HKEY_CLASSES_ROOT\MATLAB.slddc.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.slddc.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.slddc]
+
+;REMOVES MLAPPINSTALL FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mlappinstall]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlappinstall.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlappinstall.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mlappinstall]
+
+;REMOVES MLPKGINSTALL FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mlpkginstall]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlpkginstall.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlpkginstall.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mlpkginstall]
+
+;REMOVES SLXP FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.slxp]
+
+[-HKEY_CLASSES_ROOT\MATLAB.slxp.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.slxp.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.slxp]
+
+;REMOVES SLTX FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.sltx]
+
+[-HKEY_CLASSES_ROOT\MATLAB.sltx.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.sltx.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.sltx]
+
+;REMOVES MLPRJ FILE ASSOCIATIONS
+
+[-HKEY_CLASSES_ROOT\.mlprj]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlprj.8.3.0]
+
+[-HKEY_CLASSES_ROOT\MATLAB.mlprj.9.0.0]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.mlprj]
 
 ;ADD SHELL OPEN
 

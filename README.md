@@ -1,7 +1,5 @@
 # MATLAB
 
-Put all files into "Documents/MATLAB" and run: "addpath(fullfile(cd,'foldername')), savepath" for each subfolder.
+Download the needed folders and files and run "Add_Folders.m".
 
-For example: "addpath(fullfile(cd,'Units')), savepath"
-
-This will allow access to these fucntions in any working directory.
+It will enable you to access all scripts and functions in any working directory.
