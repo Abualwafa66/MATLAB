@@ -5,11 +5,11 @@ parameters.
 Types of engines include Ramjet, Turbojet, Turbofan and Turboprop.
 Only change parameters between the two seperations.
 %}
-
 %% Initialize (DO NOT CHANGE)
 clear all; close all; clc;
 e_diffuser = 1; e_fan = 1; e_compressor = 1; e_burning = 1; r_combustor = 1;
 e_turbine = 1; e_nozzel = 1; e_nozzelfan = 1; e_prop = 1; e_gear = 1; e_powerturbine = 1;
+
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------

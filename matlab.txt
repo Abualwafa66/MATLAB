@@ -1,3 +1,14 @@
+clear all; close all; clc;
+set(groot,'defaulttextInterpreter','latex');
+set(groot,'defaultLegendInterpreter','latex');
+set(groot,'defaultAxesFontSize',15)
+set(groot,'defaultLegendFontSize',10)
+
+set(groot,'defaulttextInterpreter','remove');
+set(groot,'defaultLegendInterpreter','remove');
+set(groot,'defaultAxesFontSize','remove')
+set(groot,'defaultLegendFontSize','remove')
+
 %% Warning
 w = warning('query','last')
 id = w.identifier;

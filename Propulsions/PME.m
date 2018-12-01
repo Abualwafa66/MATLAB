@@ -1,16 +1,19 @@
 clear all; close all; clc;
-%% Input (2 total)
-% At least 1 of the following:
-% M1
-% M2
-% theta
+%% Input (Total Two)
+%{
+----- At LEAST one of the following ----
+M1               (Upstream Mach Number)
+M2               (Downstream Mach Number)
+theta            (Change in Flow Direction)
 
-% At most 1 of the following:
-% P = P2/P1
-% rho = rho2/rho1
-% U = U2/U1
-% T = T2/T1
+----- At MOST one of the following ----
+P = P2/P1        (Pressure Ratio)
+rho = rho2/rho1  (Density Ratio)
+U = U2/U1        (Velocity Ratio
+T = T2/T1        (Temperature Raio)
 
+1 denotes upstream of Prandtl-Meyer Expansion, 2 denotes downstrean of PME
+%}
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------
@@ -78,7 +81,7 @@ if check == 2 || check == 11;
     if theta >= 0 && theta <= 90; check2(3) = 1; end
     %% Display
     if all(check2)
-        fprintf('Solution Success \n\n'); fprintf('PM Expansion \n');
+        fprintf('===== Prandtl-Meyer Expansion =====\n');
         fprintf('theta = %3.4f deg\n', theta);
         fprintf('M1 = %3.4f, mu1 = %3.4f\n', M1,mu1);
         fprintf('M2 = %3.4f, mu2 = %3.4f\n', M2,mu2);
@@ -86,11 +89,11 @@ if check == 2 || check == 11;
         fprintf('U2/U1 = %3.4f     (U)\n',U);
         fprintf('r2/r1 = %3.4f     (rho)\n',rho);
         fprintf('T2/T1 = %3.4f     (T)\n',T);
-        fprintf('\nStagnation Properties \n      01/1       02/2       01/02 \n')
-        fprintf('P   %7.4f    %7.4f    %7.4f \n',P1,P2,P0);
-        fprintf('rho %7.4f    %7.4f    %7.4f \n',rho1,rho2,rho0);
-        fprintf('T   %7.4f    %7.4f    %7.4f \n',T1,T2,T0);
-        fprintf('a   %7.4f    %7.4f    %7.4f \n',a1,a2,a0);
+        fprintf('\nStagnation Properties \n       01/1        02/2        01/02 (PME is Isentropic)\n')
+        fprintf('P   %8.4f    %8.4f    %8.4f (Always 1) \n',P1,P2,P0);
+        fprintf('rho %8.4f    %8.4f    %8.4f (Always 1) \n',rho1,rho2,rho0);
+        fprintf('T   %8.4f    %8.4f    %8.4f (Always 1) \n',T1,T2,T0);
+        fprintf('a   %8.4f    %8.4f    %8.4f (Always 1) \n',a1,a2,a0);
     else fprintf('Solution Failed \n');
         if ~check2(1); disp('Solution did not converge, change initial guess');
         else

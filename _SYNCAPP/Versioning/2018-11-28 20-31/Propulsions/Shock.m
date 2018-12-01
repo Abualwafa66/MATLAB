@@ -1,38 +1,22 @@
 clear all; close all; clc;
-%% Input (Total Two)
-%{ 
------ At LEAST one of the following ----
-M1            (Upstream Mach Number for stationary shock)
-M2            (Downstram Mach Number for stationary shock)
-M2n           (Normal Component of downstream Mach Number)
-beta          (angle between u1 and shock) (beta = 90 for normal shock)
-delta         (change in angle of u1 and u2) (delta = 0 for normal shock)
+%% Input (two of the following)
+% M1
+% M1n
+% M2
+% M2n
+% beta
+% delta
+% P = P2/P1
+% rho = rho2/rho1
+% U = U2/U1
+% T = T2/T1
 
------ At MOST one of the following ----
-M1n                  (Normal Component of upstream Mach Number)
-P = P2/P1            (Pressure ratio)
-rho = rho2/rho1      (Density ratio)
-U = U2/U1            (Velocity ratio)
-T = T2/T1            (Temperature ratio)
-dUn = (U2n-U1n)/a1   (Difference in normal component of velocity)
-                     (independent of reference frame)
+M1 = 2.8;
+delta = 15;
+condition = 'super';
 
-1 denotes Upstream of Shock; 2 denotes Downstream of Shock
-%} 
-%% ------------------------------------------------------------------------
-%% ------------------------------------------------------------------------
-%% ------------------------------------------------------------------------
-%% ------------------------------------------------------------------------
-%% Put your inputs here
-
-dUn = -221/343;
-beta = 90;
-condition = 'sub'; % Outflow condition 'super' or 'sub' sonic
-
-%% ------------------------------------------------------------------------
-%% ------------------------------------------------------------------------
-%% ------------------------------------------------------------------------
-%% ------------------------------------------------------------------------
+%% ---------------------------------------------------------------
+%% ---------------------------------------------------------------
 %% Equations
 gamma = 1.4;
 eq1 = 'x(4) - sqrt( (2+(gamma-1)*x(2)^2)/(2*gamma*x(2)^2+1-gamma) );';
@@ -42,8 +26,7 @@ eq4 = 'tand(x(6)) - 2*cotd(x(5))*( x(2)^2-1 )/( 2+x(1)^2*(gamma+cosd(2*x(5))) );
 eq5 = 'x(7) - (2*gamma*x(2)^2+1-gamma)/(1+gamma);';
 eq6 = 'x(8) - 1/x(9);';
 eq7 = 'x(9) - (2+(gamma-1)*x(2)^2)/((gamma+1)*x(2)^2);';
-eq8 = 'x(10) - x(7)/x(8);';
-eq9 = 'x(11) + (2/(gamma+1))*(x(2)^2-1)/x(2)';
+eq8 = 'x(10) - x(7)/x(8)';
 
 %% Check input
 if strcmp(condition,'super');
@@ -51,12 +34,12 @@ if strcmp(condition,'super');
 elseif strcmp(condition,'sub');
     beta0 = 89.999;
 end
-initial = [1;1;1;0;beta0;0;1;1;1;1;1];
+initial = [1;1;1;0;beta0;0;1;1;1;1];
 options=optimset('MaxIter',3000,'MaxFunEvals',3000,'TolFun', 1.0e-14, 'TolX',1.0e-14,'Display','off');
 check = 0;
 if exist('M1','var'); s1 = sprintf('x(1) - %f ;',M1); initial(1) = M1; check = check + 1;
 else s1 = []; end
-if exist('M1n','var'); s2 = sprintf('x(2) - %f ;',M1n); initial(2) = M1n; check = check + 10;
+if exist('M1n','var'); s2 = sprintf('x(2) - %f ;',M1n); initial(2) = M1n; check = check + 1;
 else s2 = []; end
 if exist('M2','var'); s3 = sprintf('x(3) - %f ;',M2); initial(3) = M2; check = check + 1;
 else s3 = []; end
@@ -74,14 +57,12 @@ if exist('U','var'); s9 = sprintf('x(9) - %f ;',U); initial(9) = U; check = chec
 else s9 = []; end
 if exist('T','var'); s10 = sprintf('x(10) - %f ;',T); initial(10) = T; check = check + 10;
 else s10 = []; end
-if exist('dUn','var'); s11 = sprintf('x(11) - %f ;',dUn); initial(11) = dUn; check = check + 10;
-else s11 = []; end
-s = [s1 s2 s3 s4 s5 s6 s7 s8 s9 s10 s11];
+s = [s1 s2 s3 s4 s5 s6 s7 s8 s9 s10];
 
 if check == 2 || check == 11;
     %% Solve
     eval([
-        'f = @(x) [' s eq1 eq2 eq3 eq4 eq5 eq6 eq7 eq8 eq9 '];'
+        'f = @(x) [' s eq1 eq2 eq3 eq4 eq5 eq6 eq7 eq8 '];'
         ]);
     
     result = fsolve(f,initial,options);
@@ -89,8 +70,7 @@ if check == 2 || check == 11;
     M1 = result(1); M1n = result(2);
     M2 = result(3); M2n = result(4);
     beta = result(5); delta = result(6);
-    P = result(7); rho = result(8); U = result(9);
-    T = result(10); dUn = result(11);
+    P = result(7); rho = result(8); U = result(9); T = result(10);
     P1 = (1+(gamma-1)/2*M1^2)^(gamma/(gamma-1));
     P2 = (1+(gamma-1)/2*M2^2)^(gamma/(gamma-1));
     rho1 = (1+(gamma-1)/2*M1^2)^(1/(gamma-1));
@@ -112,30 +92,22 @@ if check == 2 || check == 11;
     
     %% Display
     if all(check2);
-        if beta < 89.9999;
-            fprintf('===== Oblique Shock =====\n');
-            fprintf('Condition: %ssonic \n',condition);
-        elseif beta >= 89.9999;
-            fprintf('===== Normal Shock =====\n');
-        end
+        fprintf('Solution Success \n\n'); fprintf('Oblique Shock \n');
+        fprintf('Condition: %ssonic \n',condition);
         fprintf('beta = %3.4f deg\n', beta);
         fprintf('delta = %3.4f deg\n', delta);
-        fprintf('======================================================\n');
         fprintf('M1 = %3.4f, M1n = %3.4f \n', M1,M1n);
         fprintf('M2 = %3.4f, M2n = %3.4f \n', M2,M2n);
-        fprintf('P2/P1 = %3.4f          (P)\n',P);
-        fprintf('U2/U1 = %3.4f          (U)\n',U);
-        fprintf('r2/r1 = %3.4f          (rho)\n',rho);
-        fprintf('T2/T1 = %3.4f          (T)\n',T);
-        fprintf('(U2n-U1n)/a1 = %3.4f  (dUn)\n',dUn)
+        fprintf('P2/P1 = %3.4f     (P)\n',P);
+        fprintf('U2/U1 = %3.4f     (U)\n',U);
+        fprintf('r2/r1 = %3.4f     (rho)\n',rho);
+        fprintf('T2/T1 = %3.4f     (T)\n',T);
         fprintf('(s2-s1)/Cv = %3.4f \n',entropy);
-        fprintf('======================================================\n');
-        fprintf('Stagnation Properties \n')
-        fprintf('       01/1       02/2       01/02 \n');
-        fprintf('P    %7.4f    %7.4f    %7.4f \n',P1,P2,P0);
-        fprintf('rho  %7.4f    %7.4f    %7.4f \n',rho1,rho2,rho0);
-        fprintf('T    %7.4f    %7.4f    %7.4f (Always 1) \n',T1,T2,T0);
-        fprintf('a    %7.4f    %7.4f    %7.4f (Always 1) \n\n',a1,a2,a0);
+        fprintf('\nStagnation Properties \n      01/1       02/2       01/02 \n')
+        fprintf('P   %7.4f    %7.4f    %7.4f \n',P1,P2,P0);
+        fprintf('rho %7.4f    %7.4f    %7.4f \n',rho1,rho2,rho0);
+        fprintf('T   %7.4f    %7.4f    %7.4f \n',T1,T2,T0);
+        fprintf('a   %7.4f    %7.4f    %7.4f \n\n',a1,a2,a0);
         %% Calculate max delta
         f2 = @(M,b) M^4*sind(b)^2*(gamma+cosd(2*b)) - M^2*(gamma+cosd(2*b)-2*sind(b)^2) -2 - 0.5*sind(2*b)^2*M^4*(gamma+1);
         f2_1 = @(b) f2(M1,b);
@@ -150,6 +122,8 @@ if check == 2 || check == 11;
             delta_max2 = f_delta(M2,beta_maxdelta2);
             fprintf('max delta (M2) = %7.4f deg      (delta_max2)\n',delta_max2);
         end
+        
+        
         
         %% Failed Solution
     else fprintf('Solution Failed \n');
@@ -178,5 +152,4 @@ end
 % x(8) = rho
 % x(9) = U
 % x(10) = T
-% x(11) = dUn
 

@@ -31,12 +31,36 @@ if ~isempty(l)
     set(legend1,'interpreter','latex'); set(legend1,'fontsize',18);
 end
 %% Figure size
-if isempty(varargin)
+[~,n] = size(varargin);
+
+if n == 0; % full page png
+    set(a,'Position',[0 0 1920 1080]);
     set(gcf,'PaperUnits','inches','PaperPosition',[0 0 16 9]);
-    print(filename,'-dpng','-r240'); % for full page wide figure
-elseif strcmp(varargin{1},'halfpage');
-    set(gcf,'PaperUnits','inches','PaperPosition',[0 0 9 8]);
-    print(filename,'-dpng','-r240'); % for half page wide figure
+    print(filename,'-dpng','-r240');
+elseif n == 1;
+    if strcmpi(varargin{1},'halfpage'); % half page png
+        set(a,'Position',[0 0 900 800]);
+        set(gcf,'PaperUnits','inches','PaperPosition',[0 0 9 8]);
+        print(filename,'-dpng','-r240');
+    elseif strcmpi(varargin{1},'PDF'); % full page pdf
+        set(a,'Position',[0 0 1920 1080]);
+        set(gcf,'PaperUnits','inches','PaperPosition',[0 0 16 9]);
+        print(filename,'-dpdf','-r240','-bestfit');
+    end
+elseif n == 2;
+    if (strcmpi(varargin{1},'halfpage') && strcmpi(varargin{2},'PDF')) || ...
+            (strcmpi(varargin{2},'halfpage') && strcmpi(varargin{1},'PDF'));
+        % half page pdf
+        set(a,'Position',[0 0 900 800]);
+        set(gcf,'PaperUnits','inches','PaperPosition',[0 0 9 8]);
+        print(filename,'-dpdf','-r240','-bestfit');
+    elseif (strcmpi(varargin{1},'vertical') && strcmpi(varargin{2},'PDF')) || ...
+            (strcmpi(varargin{2},'vertical') && strcmpi(varargin{1},'PDF'));
+        % vertical pdf
+        set(a,'Position',[0 0 600 1600]);
+        set(gcf,'PaperUnits','inches','PaperPosition',[0 0 6 16]);
+        print(filename,'-dpdf','-r240','-bestfit');
+    end
 end
 
 end % end savefigure
