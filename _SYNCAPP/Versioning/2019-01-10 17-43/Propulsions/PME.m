@@ -4,12 +4,12 @@ clear all; close all; clc;
 ----- At LEAST one of the following ----
 M1               (Upstream Mach Number)
 M2               (Downstream Mach Number)
-theta [deg]      (Change in Flow Direction)
+theta            (Change in Flow Direction)
 
 ----- At MOST one of the following ----
 P = P2/P1        (Pressure Ratio)
 rho = rho2/rho1  (Density Ratio)
-U = U2/U1        (Velocity Ratio)
+U = U2/U1        (Velocity Ratio
 T = T2/T1        (Temperature Raio)
 
 1 denotes upstream of Prandtl-Meyer Expansion, 2 denotes downstrean of PME
@@ -20,8 +20,8 @@ T = T2/T1        (Temperature Raio)
 %% ------------------------------------------------------------------------
 %% Put your inputs here
 
-M1 =  2;
-theta = 14;
+M1 =  2.25;
+P =  0.1;
 
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------
@@ -62,7 +62,7 @@ if check == 2 || check == 11;
     eval([
         'f = @(x) [' s eq1 eq2 eq3 eq4 eq5 '];'
         ]);
-    result = real(fsolve(f,initial,options));
+    result = fsolve(f,initial,options);
     
     M1 = result(1); mu1 = f_mu(M1);
     M2 = result(2); mu2 = f_mu(M2);
@@ -83,18 +83,17 @@ if check == 2 || check == 11;
     if all(check2)
         fprintf('===== Prandtl-Meyer Expansion =====\n');
         fprintf('theta = %3.4f deg\n', theta);
-        fprintf('M1 = %3.4f, mu1 = %3.4f deg\n', M1,mu1);
-        fprintf('M2 = %3.4f, mu2 = %3.4f deg\n', M2,mu2);
+        fprintf('M1 = %3.4f, mu1 = %3.4f\n', M1,mu1);
+        fprintf('M2 = %3.4f, mu2 = %3.4f\n', M2,mu2);
         fprintf('P2/P1 = %3.4f     (P)\n',P);
         fprintf('U2/U1 = %3.4f     (U)\n',U);
         fprintf('r2/r1 = %3.4f     (rho)\n',rho);
         fprintf('T2/T1 = %3.4f     (T)\n',T);
-        fprintf('\nStagnation Properties \n');
-        fprintf('|    |     01/1    |     02/2    |   01/02 (Isentropic)\n');
-        fprintf('| P  | %10.4f  | %10.4f  |  Always 1 \n',P1,P2);
-        fprintf('|rho | %10.4f  | %10.4f  |  Always 1 \n',rho1,rho2);
-        fprintf('| T  | %10.4f  | %10.4f  |  Always 1 \n',T1,T2);
-        fprintf('| a  | %10.4f  | %10.4f  |  Always 1 \n',a1,a2);
+        fprintf('\nStagnation Properties \n       01/1        02/2        01/02 (PME is Isentropic)\n')
+        fprintf('P   %8.4f    %8.4f    %8.4f (Always 1) \n',P1,P2,P0);
+        fprintf('rho %8.4f    %8.4f    %8.4f (Always 1) \n',rho1,rho2,rho0);
+        fprintf('T   %8.4f    %8.4f    %8.4f (Always 1) \n',T1,T2,T0);
+        fprintf('a   %8.4f    %8.4f    %8.4f (Always 1) \n',a1,a2,a0);
     else fprintf('Solution Failed \n');
         if ~check2(1); disp('Solution did not converge, change initial guess');
         else

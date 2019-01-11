@@ -25,7 +25,8 @@ dUn = (U2n-U1n)/a1   (Difference in normal component of velocity)
 %% ------------------------------------------------------------------------
 %% Put your inputs here
 
-dUn = -221/343;
+dUn = -0.9623;
+% M1 = 2;
 beta = 90;
 condition = 'sub'; % Outflow condition 'super' or 'sub' sonic
 

@@ -14,9 +14,9 @@ clear all; close all; clc;
 %% ------------------------------------------------------------------------
 %% Input: Ae/At; Pa/P0 (fixed input)
 % Ratio between exit area and throat area (Ae/At);
-A = 4.5;  
+A = 1.1;  
 % Ratio between ambient pressure and stagnation pressure (Pa/P0);
-Pa0 = 1.99/2;  
+Pa0 = 101.325/191.8;  
 
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------

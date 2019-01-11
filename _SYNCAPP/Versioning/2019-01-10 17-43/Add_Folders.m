@@ -5,4 +5,3 @@ addpath(fullfile(cd,'FluidMechanics')), savepath;
 addpath(fullfile(cd,'Propulsions')), savepath;
 addpath(fullfile(cd,'ScientificWritting')), savepath;
 addpath(fullfile(cd,'Units')), savepath;
-addpath(fullfile(cd,'gaslab')), savepath;

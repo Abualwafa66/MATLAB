@@ -15,10 +15,8 @@ Where 0 denotes stagnation properties
 %% ------------------------------------------------------------------------
 %% Put your inputs here
 
-% M = 2;
-%P0 = 150/101.325;
-
-condition = 'super'; % Outflow condition 'super' or 'sub' sonic
+P0 = 150/101.325;
+condition = 'sub'; % Outflow condition 'super' or 'sub' sonic
 
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------
@@ -105,9 +103,8 @@ if check;
         fprintf('Mass flow rate\n');
         fprintf('G/(r0*a0*A(x)) = %3.4f     (G)\n',G);
         fprintf('G/(r0*a0*Ac)   = %3.4f     (G/Ac)\n\n',G/Ac);
-        fprintf('Critical Area (also best Nozzel Design)\n');
+        fprintf('Critical Area\n');
         fprintf('Ac/A(x) = %3.4f     (Ac)\n',Ac);
-        fprintf('A(x)/Ac = %3.4f     (1/Ac)\n',1/Ac);
     else fprintf('Solution Failed \n');
         if ~check2(1); disp('Solution did not converge, change initial guess');end
     end

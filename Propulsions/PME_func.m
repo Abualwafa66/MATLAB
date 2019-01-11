@@ -1,4 +1,4 @@
-clear all; close all; clc;
+function out = PME_func(in_str1, in_num1, in_str2, in_num2, out_str)
 %% Input (Total Two)
 %{
 ----- At LEAST one of the following ----
@@ -20,8 +20,8 @@ T = T2/T1        (Temperature Raio)
 %% ------------------------------------------------------------------------
 %% Put your inputs here
 
-M1 =  2;
-theta = 14;
+eval([in_str1, '=' num2str(in_num1) ';']); 
+eval([in_str2, '=' num2str(in_num2) ';']); 
 
 %% ------------------------------------------------------------------------
 %% ------------------------------------------------------------------------
@@ -81,20 +81,6 @@ if check == 2 || check == 11;
     if theta >= 0 && theta <= 90; check2(3) = 1; end
     %% Display
     if all(check2)
-        fprintf('===== Prandtl-Meyer Expansion =====\n');
-        fprintf('theta = %3.4f deg\n', theta);
-        fprintf('M1 = %3.4f, mu1 = %3.4f deg\n', M1,mu1);
-        fprintf('M2 = %3.4f, mu2 = %3.4f deg\n', M2,mu2);
-        fprintf('P2/P1 = %3.4f     (P)\n',P);
-        fprintf('U2/U1 = %3.4f     (U)\n',U);
-        fprintf('r2/r1 = %3.4f     (rho)\n',rho);
-        fprintf('T2/T1 = %3.4f     (T)\n',T);
-        fprintf('\nStagnation Properties \n');
-        fprintf('|    |     01/1    |     02/2    |   01/02 (Isentropic)\n');
-        fprintf('| P  | %10.4f  | %10.4f  |  Always 1 \n',P1,P2);
-        fprintf('|rho | %10.4f  | %10.4f  |  Always 1 \n',rho1,rho2);
-        fprintf('| T  | %10.4f  | %10.4f  |  Always 1 \n',T1,T2);
-        fprintf('| a  | %10.4f  | %10.4f  |  Always 1 \n',a1,a2);
     else fprintf('Solution Failed \n');
         if ~check2(1); disp('Solution did not converge, change initial guess');
         else
@@ -106,6 +92,7 @@ else
     disp('Input error');
 end
 
+eval(['out = ', out_str, ';']);
 
 %%
 % x(1) = M1
